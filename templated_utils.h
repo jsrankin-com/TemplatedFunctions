@@ -21,18 +21,18 @@ void PrintVector(std::vector<T> v)
 template <class T>
 T ReturnSmaller(T lhs, T rhs)
 {
-    return lhs < rhs?lhs : rhs;
+    return lhs < rhs ? lhs : rhs;
 }
 
 template <class T>
 T ReturnLarger(T lhs, T rhs)
 {
-    return lhs > rhs?lhs : rhs;
+    return lhs > rhs ? lhs : rhs;
 }
 
 //Tries to reserve memory for a vector
 template <class T>
-std::vector<T> ReservedVector(int n)
+std::vector<T> ReservedVector_s(int n)
 {
 	std::vector<T> ret;
 
@@ -50,6 +50,18 @@ std::vector<T> ReservedVector(int n)
 	catch (const std::length_error& le) {
 		std::cerr << "Length error: " << le.what() << '\n';
 	}
+
+	return ret;
+}
+
+template <class T>
+std::vector<T> ReservedVector(int n)
+{
+	std::vector<T> ret;
+
+	//Try to reserve the memory
+	if (n < ret.max_size() && n > 0)
+		ret.reserve(n);
 
 	return ret;
 }
