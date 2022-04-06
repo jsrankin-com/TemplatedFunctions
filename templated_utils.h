@@ -66,3 +66,9 @@ std::vector<T> ReservedVector(int n)
 	return ret;
 }
 
+template <class T>
+T SumVector(std::vector<T>& v)
+{
+	return std::accumulate(v.begin(), v.end(), 0);
+}
+
